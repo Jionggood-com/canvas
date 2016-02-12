@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>超好用的canvas刮刮抽奖插件</title>
+<script src="jquery-1.9.1.min.js"></script>
+<style>
+.scratchpad {
+	width: 560px;
+	height: 160px;
+}
+.scratchpad	canvas{left:0;}
+</style>
+</head>
+
+<body>
+<div id="guagua" class="scratchpad"></div>
+<div id="percent">&nbsp;</div>
+<script src="guaguajiao.js"></script>
+
+<script type="text/javascript">
+    
+    $('#guagua').JGguagua({
+        // 刷/刮的大小。
+        size: 30,
+        // 背景（图像路径或十六进制颜色）
+        bg: 'images/scrape2.png',
+        // 前景（图像路径或十六进制颜色）
+        fg: 'images/scrape1.jpg',
+        // 设置光标：鼠标图片
+        cursor: 'url("images/coin.png") 5 5, default',
+        // 在realitime计算百分比
+        realtime: true,
+        // 设置scratcMove回调
+        scratchMove: function (e, percent) {
+            // 显示挂出比例
+            $('#percent').html(percent);
+
+            // 刮出40％后显示
+            if (percent > 30) {
+                this.clear();
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>
